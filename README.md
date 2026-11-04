@@ -28,11 +28,31 @@ Requirements: [.NET 10 SDK](https://dotnet.microsoft.com/download). For the inst
 ```powershell
 dotnet build FanWatch.slnx               # build
 dotnet test FanWatch.slnx                # run the tests
-.\build-installer.ps1                    # tests + self-contained build + dist\FanWatch-Setup-<version>.exe
-.\install.ps1                            # or: quick install to %LOCALAPPDATA%\FanWatch for development
+.\install.ps1                            # quick install to %LOCALAPPDATA%\FanWatch for development
 ```
 
-The version comes from `<Version>` in `src/FanWatch/FanWatch.csproj`.
+## Make the installer
+
+1. Install the tools once:
+
+   ```powershell
+   winget install Microsoft.DotNet.SDK.10
+   winget install JRSoftware.InnoSetup
+   ```
+
+2. Set the version in `src/FanWatch/FanWatch.csproj`, for example `<Version>1.2.0</Version>`. The installer file name and the version shown in Windows Settings > Apps come from it.
+
+3. From the project folder, run:
+
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\build-installer.ps1
+   ```
+
+   The script runs the tests (and stops if any fail), publishes a self-contained single-file build to `dist\app`, then packages it with Inno Setup.
+
+4. The installer is written to `dist\FanWatch-Setup-<version>.exe` (about 50 MB). Copy that one file to any Windows laptop and run it.
+
+Installing a newer version over an older one upgrades it in place, closing FanWatch first if it is open. The installer's settings (shortcuts, install folder, app ID) are in `installer/FanWatch.iss`; keep its `AppId` unchanged so new versions upgrade instead of installing side by side.
 
 Command-line options: `--ports` opens on the Ports tab; `--expand=<name>` expands a program group (for example `--expand=brave`).
 

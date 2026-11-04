@@ -51,5 +51,4 @@ src/FanWatch/Core    data, scoring and process handling (no UI)
 src/FanWatch/UI      the window and its owner-drawn controls (WinForms)
 tests/FanWatch.Tests xUnit tests
 installer/           Inno Setup script
-docs/                original design and plan
 ```

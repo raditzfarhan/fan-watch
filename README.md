@@ -15,7 +15,7 @@ FanWatch is a small Windows desktop app. Open it while the fan is roaring and it
 
 ## Install
 
-Download or build `FanWatch-Setup-<version>.exe` and run it. It installs for the current user (no admin rights needed) and adds FanWatch to the Start menu, with an optional desktop shortcut. Uninstall from Windows Settings > Apps.
+Download `FanWatch-Setup-<version>.exe` from the [latest release](https://github.com/raditzfarhan/fan-watch/releases/latest) (or [make it yourself](#make-the-installer)) and run it. It installs for the current user (no admin rights needed) and adds FanWatch to the Start menu, with an optional desktop shortcut. Uninstall from Windows Settings > Apps.
 
 The installer is not code-signed, so Windows SmartScreen may warn the first time: choose **More info > Run anyway**.
 

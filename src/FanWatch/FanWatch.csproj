@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- Only for System.Windows.Automation (reading browser tab titles); no WPF windows are used. -->
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>FanWatch</AssemblyName>
+    <RootNamespace>FanWatch</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <ApplicationIcon>fan.ico</ApplicationIcon>
+    <Version>1.1.0</Version>
+    <Product>FanWatch</Product>
+    <Description>See what is making your fan loud</Description>
+    <Copyright>Ahmad Farhan</Copyright>
+    <TieredPGO>true</TieredPGO>
+    <!-- Keep our own footprint small: no background GC thread, compact heap. -->
+    <ConcurrentGarbageCollection>false</ConcurrentGarbageCollection>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="FanWatch.Tests" />
+    <!-- UseWPF drops System.IO from implicit usings (WPF has its own Path type); FanWatch uses no WPF shapes. -->
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+</Project>
